@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var dictionary = ["pro","gram","merit","program","it","programmer"];
+
+function isInDict(word){    //check whether the word is in dictionary or not
+   for (var i = 0; i < 6; i++)
+      if (dictionary[i] == word){
+         return true;
+      }
+   return false;
+}
+
+function wordBreak(str, n, result) {
+   for (var i=1; i<=n; i++) {
+      var subStr = str.substr(0, i);       //get string from 0 to ith location of the string
+      if (isInDict(subStr)) {       //if subStr is found in the dictionary
+         if (i == n) {
+            result += subStr; //add substring in the result.
+            document.write(result,"<br />");
+         }
+         wordBreak(str.substr(i, n-i), n-i, result + subStr + ",");    //otherwise break rest part
+      }
+   }
+}
+   var str="programit";
+   var str2="programmerit";
+   wordBreak(str, str.length,"");
+   wordBreak(str2, str2.length,"");
+</script>
+</body>
+</html> 
